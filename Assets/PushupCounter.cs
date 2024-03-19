@@ -43,19 +43,24 @@ public class PushupCounter : MonoBehaviour
 
     IEnumerator GetPositions()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(10f);
+        
         Debug.Log("Press space to set low position");
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+        
+        yield return new WaitForSeconds(5f);
+        
         downPos = head.transform.position.y;
-
         Instantiate(planePrefab, head.transform.position, quaternion.identity);
             
-        yield return new WaitForSeconds(1f);
    
+        
         Debug.Log("Press space to set high position");
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+        
+        yield return new WaitForSeconds(5f);
+
         upPos = head.transform.position.y;
         Instantiate(planePrefab, head.transform.position, quaternion.identity);
+        
         
         yield return new WaitForSeconds(1f);
 
