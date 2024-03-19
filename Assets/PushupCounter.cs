@@ -43,7 +43,7 @@ public class PushupCounter : MonoBehaviour
 
     IEnumerator GetPositions()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
         
         Debug.Log("Press space to set low position");
         
