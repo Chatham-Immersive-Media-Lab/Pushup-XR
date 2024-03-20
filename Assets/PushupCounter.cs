@@ -39,13 +39,19 @@ public class PushupCounter : MonoBehaviour
 
             if (atDownPosition && atUpPosition)
             {
+                previousValue = pushupCount;
+
                 pushupCount++;
-                Debug.Log("Pushup");
+                pushupCount /=2;
+                if (previousValue != pushupCount)
+                {
+                    audioSource.PlayOneShot(Boop);
+                    Debug.Log("Pushup");
+                }
                 atDownPosition = false;
                 atUpPosition = false;
             }
         }
-        CountPushupsAndBeep();
     }
 
     IEnumerator GetPositions()
@@ -67,16 +73,4 @@ public class PushupCounter : MonoBehaviour
         positionsSet = true;
     }
 
-    private void CountPushupsAndBeep()
-    {
-        counter = pushupCount / 2;
-        if (Mathf.Floor(counter) != Mathf.Floor(previousValue))
-        {
-            // Play the audio clip
-            if (Boop != null)
-            {
-                audioSource.PlayOneShot(Boop);
-            }
-        }
-    }
 }
