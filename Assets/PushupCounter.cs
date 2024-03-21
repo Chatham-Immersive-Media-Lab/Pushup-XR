@@ -1,7 +1,7 @@
 using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
-
+using TMPro;
 public class PushupCounter : MonoBehaviour
 {
     public AudioSource audioSource;
@@ -16,6 +16,7 @@ public class PushupCounter : MonoBehaviour
     public float pushupCount;
     public float counter;
     private float previousValue;
+    public TMP_Text words;
 
     private void Start()
     {
@@ -52,6 +53,8 @@ public class PushupCounter : MonoBehaviour
                 atUpPosition = false;
             }
         }
+
+        words.text = pushupCount.ToString();
     }
 
     IEnumerator GetPositions()
