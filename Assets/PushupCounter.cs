@@ -14,7 +14,6 @@ public class PushupCounter : MonoBehaviour
     private bool positionsSet;
     public AudioClip Boop;
     public float pushupCount;
-    public float counter;
     private float previousValue;
     public TMP_Text words;
 
@@ -42,24 +41,25 @@ public class PushupCounter : MonoBehaviour
             {
                 previousValue = pushupCount;
 
-                pushupCount++;
-                pushupCount /=2;
+                pushupCount+=1;
+                
                 if (previousValue != pushupCount)
                 {
                     audioSource.PlayOneShot(Boop);
                     Debug.Log("Pushup");
+                    words.text = Mathf.Round(pushupCount/2).ToString();
                 }
+                
                 atDownPosition = false;
                 atUpPosition = false;
-            }
+            }   
         }
 
-        words.text = pushupCount.ToString();
     }
 
     IEnumerator GetPositions()
     {
-        yield return new WaitForSeconds(16f);
+        yield return new WaitForSeconds(17f);
         downPos = head.transform.position.y;
         Instantiate(planePrefab, head.transform.position, quaternion.identity);
 
